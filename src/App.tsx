@@ -10,7 +10,8 @@ function App() {
           <button className="login_btn">로그인</button>
         </div>
         <div className="join">
-          <button className='join_btn'>계정 없을 시 | 회원가입</button>
+          <p className='join_p'>계정 없을 시 |</p>
+          <button className='join_btn'>회원가입</button>
         </div>        
       </div>
     </div>

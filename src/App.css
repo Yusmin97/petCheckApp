@@ -45,20 +45,30 @@
 	background-size:cover;
 }
 .join { 
-	color:rgba(0, 0, 0, 1);
 	width:60vw;
 	height:3vh;
 	display: flex;
   justify-content: center ;
+  align-items: center;
   margin-top: 1vh;
+  margin-left: 10vw;
 }
 
-.join_btn {
+.join_p {
+  color:rgba(0, 0, 0, 1);
   font-family:Inter;
 	text-align:center;
 	font-size:15px;
 	letter-spacing:0;
-  margin-left: 10vw;
+}
+
+.join_btn {
+  color:rgba(0, 0, 0, 1);
+  font-family:Inter;
+	text-align:center;
+	font-size:15px;
+	letter-spacing:0;
   background-color:transparent;
   border: none;
+  margin-left: 1vw;
 }
