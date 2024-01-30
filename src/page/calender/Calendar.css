@@ -1,0 +1,19 @@
+.calendar {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.calendar th, .calendar td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.current-day {
+  background-color: lightblue;
+  border-radius: 50%;
+}
+
+.not-current-month {
+  color: #ccc; /* 흐릿한 색상 */
+}
