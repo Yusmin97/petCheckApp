@@ -39,6 +39,7 @@
 }
 .login {
   margin-left: 45vw;
+	margin-top: 2vh;
 }
 .login_btn {
 	width:30vw;
@@ -51,4 +52,5 @@
 	border-top-right-radius:30px;
 	border-bottom-left-radius:30px;
 	border-bottom-right-radius:30px;
+	border: none;
 }
