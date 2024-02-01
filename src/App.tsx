@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import Calendar from './page/calender/Calendar';
-
+import Router from './page/Route';
 
 function App() {
   return (
     <div className="App">
-      <Calendar />
+      <Router />
     </div>
   );
 }
