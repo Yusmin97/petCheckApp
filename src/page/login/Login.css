@@ -1,0 +1,54 @@
+.container { 
+	background-color:rgba(255, 247.52001017332077, 221.00000202655792, 1);
+	width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input_row2 { 
+  margin-top: 3vh;
+}
+.id { 
+	width:75vw;
+	height:5vh;
+	font-family:Inter;
+	font-size:15px;
+  background-color:rgba(255, 229.52130317687988, 139.18750405311584, 1);
+	border-top-left-radius:30px;
+	border-top-right-radius:30px;
+	border-bottom-left-radius:30px;
+	border-bottom-right-radius:30px;
+  border: none;
+  text-indent: 20px;
+}
+.password {
+  background-color:rgba(255, 229.52130317687988, 139.18750405311584, 1);
+	width:75vw;
+	height:5vh;
+	border-top-left-radius:30px;
+	border-top-right-radius:30px;
+	border-bottom-left-radius:30px;
+	border-bottom-right-radius:30px;
+	font-family:Inter;
+	font-size:15px;
+  border: none;
+  text-indent: 20px;
+}
+.login {
+  margin-left: 45vw;
+}
+.login_btn {
+	width:30vw;
+	height:5vh;
+	font-family:Inter;
+	text-align:center;
+	font-size:20px;
+  background-color:rgba(255, 229.52130317687988, 139.18750405311584, 1);
+	border-top-left-radius:30px;
+	border-top-right-radius:30px;
+	border-bottom-left-radius:30px;
+	border-bottom-right-radius:30px;
+}
