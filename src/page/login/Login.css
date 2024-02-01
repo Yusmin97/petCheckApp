@@ -7,35 +7,42 @@
   align-items: center;
   flex-direction: column;
 }
-
+.input_row1 { 
+	background-color:rgba(255, 229.52130317687988, 139.18750405311584, 1);
+	width:75vw;
+	height:5vh;
+	border-top-left-radius:30px;
+	border-top-right-radius:30px;
+	border-bottom-left-radius:30px;
+	border-bottom-right-radius:30px;
+}
 .input_row2 { 
   margin-top: 3vh;
+	background-color:rgba(255, 229.52130317687988, 139.18750405311584, 1);
+	width:75vw;
+	height:5vh;
+	border-top-left-radius:30px;
+	border-top-right-radius:30px;
+	border-bottom-left-radius:30px;
+	border-bottom-right-radius:30px;
 }
 .id { 
 	width:75vw;
 	height:5vh;
 	font-family:Inter;
 	font-size:15px;
-  background-color:rgba(255, 229.52130317687988, 139.18750405311584, 1);
-	border-top-left-radius:30px;
-	border-top-right-radius:30px;
-	border-bottom-left-radius:30px;
-	border-bottom-right-radius:30px;
   border: none;
   text-indent: 20px;
+	background-color: transparent;
 }
 .password {
-  background-color:rgba(255, 229.52130317687988, 139.18750405311584, 1);
 	width:75vw;
 	height:5vh;
-	border-top-left-radius:30px;
-	border-top-right-radius:30px;
-	border-bottom-left-radius:30px;
-	border-bottom-right-radius:30px;
 	font-family:Inter;
 	font-size:15px;
   border: none;
   text-indent: 20px;
+	background-color: transparent;
 }
 .login {
   margin-left: 45vw;

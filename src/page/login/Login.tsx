@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.css';
 
-function Login() {
+function LoginPage() {
   return (
     <div className="container">
       <div className="input_row1">
@@ -17,4 +17,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPage;
