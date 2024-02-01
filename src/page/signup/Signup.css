@@ -1,0 +1,207 @@
+.container {
+  background-color: rgba(255, 247.52001017332077, 221.00000202655792, 1);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.signupId {
+  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
+  position: relative;
+  width: 75vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.signupPassword {
+  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
+  position: relative;
+  width: 75vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-top: 2vh;
+}
+.signupPasswordCheck {
+  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
+  width: 75vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-top: 2vh;
+}
+.signupEmail {
+  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
+  position: relative;
+  width: 75vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-top: 2vh;
+}
+.signupPhone {
+  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
+  width: 75vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-top: 2vh;
+}
+.signupName {
+  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
+  width: 75vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-top: 2vh;
+}
+.signupIdInput {
+  width: 65vw;
+  height: 5vh;
+  font-family: Inter;
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  text-indent: 20px;
+}
+.signupPasswordInput {
+  width: 65vw;
+  height: 5vh;
+  font-family: Inter;
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  text-indent: 20px;
+}
+.signupEmailInput {
+  width: 65vw;
+  height: 5vh;
+  font-family: Inter;
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  text-indent: 20px;
+}
+.signupPhoneInput {
+  width: 65vw;
+  height: 5vh;
+  font-family: Inter;
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  text-indent: 20px;
+}
+.signupPasswordInputCheck {
+  width: 65vw;
+  height: 5vh;
+  font-family: Inter;
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  text-indent: 20px;
+}
+.signupNameInput {
+  width: 65vw;
+  height: 5vh;
+  font-family: Inter;
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  text-indent: 20px;
+}
+.signup_btn {
+  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
+  width: 130px;
+  height: 50px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-top: 4vh;
+  margin-left: 45vw;
+  border: none;
+}
+.duplicateIdcheck {
+  position: absolute; /* 절대 위치 설정 */
+  top: 50%; /* 상단 기준으로 중앙 정렬 */
+  transform: translateY(-50%); /* 세로 중앙 정렬 */
+  right: -20px; /* 우측에서 10px만큼 떨어지도록 설정 */
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 1);
+  width: 10px;
+  height: 10px;
+}
+.duplicatePasswordcheck {
+  position: absolute; /* 절대 위치 설정 */
+  top: 50%; /* 상단 기준으로 중앙 정렬 */
+  transform: translateY(-50%); /* 세로 중앙 정렬 */
+  right: -20px; /* 우측에서 10px만큼 떨어지도록 설정 */
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 1);
+  width: 10px;
+  height: 10px;
+}
+.duplicateEmailcheck {
+  position: absolute; /* 절대 위치 설정 */
+  top: 50%; /* 상단 기준으로 중앙 정렬 */
+  transform: translateY(-50%); /* 세로 중앙 정렬 */
+  right: -20px; /* 우측에서 10px만큼 떨어지도록 설정 */
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 1);
+  width: 10px;
+  height: 10px;
+}
+
+.duplicateId {
+  width: 70px;
+  height: 20px;
+  font-family: Inter;
+  text-align: center;
+  font-size: 12px;
+  background-color: transparent;
+  border: none;
+  margin-left: 10vw;
+}
+.duplicateEmail {
+  width: 70px;
+  height: 20px;
+  font-family: Inter;
+  text-align: center;
+  font-size: 12px;
+  background-color: transparent;
+  border: none;
+  margin-left: 10vw;
+}
+.signupLogo {
+  width: 260px;
+  height: 70px;
+  font-family: Inter;
+  text-align: center;
+  font-size: 30px;
+}
