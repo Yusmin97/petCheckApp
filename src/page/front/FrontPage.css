@@ -1,0 +1,68 @@
+.container { 
+	background-color:rgba(255, 247.52001017332077, 221.00000202655792, 1);
+	width:100vw;
+	height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+.login_btn { 
+	color:rgba(0, 0, 0, 1);
+	font-family:Inter;
+	text-align:center;
+	font-size:20px;
+	letter-spacing:0;
+  background-color:rgba(255, 229.52130317687988, 139.18750405311584, 1);
+	width:230px;
+	height:50px;
+	border-top-left-radius:30px;
+	border-top-right-radius:30px;
+	border-bottom-left-radius:30px;
+	border-bottom-right-radius:30px;
+  border: none;
+}
+
+.cat_logo { 
+	width:90vw;
+	height:60vh;
+	background-image:url(/public/KakaoTalk_20240126_174643189.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.join { 
+	width:60vw;
+	height:3vh;
+	display: flex;
+  justify-content: center ;
+  align-items: center;
+  margin-top: 1vh;
+  margin-left: 10vw;
+}
+
+.join_p {
+  color:rgba(0, 0, 0, 1);
+  font-family:Inter;
+	text-align:center;
+	font-size:15px;
+	letter-spacing:0;
+}
+
+.join_btn {
+  color:rgba(0, 0, 0, 1);
+  font-family:Inter;
+	text-align:center;
+	font-size:15px;
+	letter-spacing:0;
+  background-color:transparent;
+  border: none;
+  margin-left: 1vw;
+}
