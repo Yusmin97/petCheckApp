@@ -1,4 +1,5 @@
 import React from 'react';
+import Calendar from '../calender/Calendar';
 import './Main.css';
 
 function Main() {
@@ -23,7 +24,7 @@ function Main() {
         </div>
       </div>
       <div className="mainCalendar">
-        <div className="calendarMain">캘린더</div>
+        <Calendar />
       </div>
     </div>
   );
