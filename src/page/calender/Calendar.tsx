@@ -44,24 +44,43 @@ const prevMonth = () => {
 // 이전 코드는 유지합니다.
 
 const renderCalendar = () => {
+  // 해당 월의 첫째 날과 마지막 날을 구합니다.
   const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
   const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  
+  // 해당 월의 첫째 날의 요일을 구합니다.
   const startingDayOfWeek = firstDayOfMonth.getDay();
 
-  const blanks = Array(startingDayOfWeek).fill(0);
+  // 이전 달의 마지막 일을 구합니다.
+  const lastDayOfPrevMonth = new Date(date.getFullYear(), date.getMonth(), 0);
+  const lastDayPrevMonth = lastDayOfPrevMonth.getDate();
+
+  // 이전 달의 일 수를 채우기 위한 배열을 생성합니다.
+  const blanks = Array.from({ length: startingDayOfWeek }, (_, i) => lastDayPrevMonth - startingDayOfWeek + i + 1);
+
+  // 해당 월의 날짜 배열을 생성합니다.
   const daysInMonth = Array.from({ length: lastDayOfMonth.getDate() }, (_, i) => i + 1);
+
+  // 다음 달의 일 수를 채우기 위한 배열을 생성합니다.
   const daysInNextMonth = Array.from({ length: 6 * 7 - (daysInMonth.length + startingDayOfWeek) }, (_, i) => i + 1);
 
   let dayCount = 1;
 
+  // 해당 월의 첫째 주부터 6주까지를 반복하여 테이블의 행을 생성합니다.
   return Array(6).fill(0).map((_, weekIndex) => (
     <tr key={weekIndex}>
       {days.map((day, dayIndex) => {
+        // 첫째 주이고, 현재 요일이 해당 월의 시작 요일 이전인 경우, 이전 달의 일 수를 표시합니다.
         if (weekIndex === 0 && dayIndex < startingDayOfWeek) {
           return <td key={`${weekIndex}-${dayIndex}`} className="not-current-month">{blanks[dayIndex]}</td>;
-        } else if (dayCount > lastDayOfMonth.getDate()) {
+        } 
+        // 해당 월의 일 수를 모두 표시한 경우, 다음 달의 일 수를 표시합니다.
+        else if (dayCount > lastDayOfMonth.getDate()) {
           return <td key={`${weekIndex}-${dayIndex}`} className="not-current-month">{daysInNextMonth.shift()}</td>;
-        } else {
+        } 
+        // 해당 월의 일 수를 표시합니다.
+        else {
+          // 선택된 날짜인 경우에는 스타일을 적용합니다.
           const classNames = (dayCount === selectedDate.getDate() && date.getMonth() === firstDayOfMonth.getMonth()) ? 'current-day' : '';
           return <td key={`${weekIndex}-${dayIndex}`} className={classNames}>{dayCount++}</td>;
         }
@@ -69,8 +88,6 @@ const renderCalendar = () => {
     </tr>
   ));
 };
-
-
 
   return (
     <div className="calendar-container">
