@@ -3,3 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+input:focus {
+  outline: none; /* 포커스 시 테두리 제거 */
+}
