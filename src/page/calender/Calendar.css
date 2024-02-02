@@ -8,20 +8,49 @@
   flex-direction: column;
 }
 
-.calendar {
-  border-collapse: collapse;
-  width: 100%;
+.calendar-header {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calendar-header button {
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
+}
+.goToBtn {
+  margin-left: 2vw;
 }
 
-.calendar th, .calendar td {
+.yearsMonth {
+  font-size: 25px;
+}
+
+.calendar {
+  border-collapse: collapse;
+  width: 100vw;
+  height: 90vh;
+}
+
+.calendar th {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
 }
 
+.calendar td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: right;
+  vertical-align : top;
+}
+
 .current-day {
-  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
-  border-radius: 50%;
+  background-color: rgba(255, 229, 139, 1);
 }
 
 .not-current-month {
