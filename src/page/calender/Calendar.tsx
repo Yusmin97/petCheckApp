@@ -8,6 +8,10 @@ import './Calendar.css';
 function Calendar() {
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [inputYear, setInputYear] = useState('');
+  const [inputMonth, setInputMonth] = useState('');
+  const [inputDay, setInputDay] = useState('');
+
 
   const days = ['일', '월', '화', '수', '목', '금', '토'];
   const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
@@ -42,9 +46,9 @@ function Calendar() {
     setShowDatePicker(true);
   };
 
-  const handleDatePickerConfirm = (date: any) => {
-    setDate(date);
-    setShowDatePicker(false);
+  const handleDatePickerChange = (selectedDate: any) => {
+    setDate(selectedDate);
+    setShowDatePicker(false); // DatePicker를 닫습니다.
   };
 
   const goToToday = () => {
@@ -144,12 +148,17 @@ function Calendar() {
           </button>
         </div>
       </div>
-      <DatePicker
-        selected={date}
-        onChange={handleDatePickerConfirm}
-        dateFormat="yyyy-MM-dd"
-        className="date-picker"
-      />
+      {showDatePicker && (
+        <div className="date-picker">
+          {/* DatePicker가 열렸을 때만 보입니다. */}
+          <DatePicker
+            selected={date}
+            onChange={handleDatePickerChange}
+            dateFormat="yyyy-MM-dd"
+            placeholderText="날짜 선택"
+          />
+        </div>
+      )}
       <table className="calendar">
         <thead>
           <tr>{renderDaysOfWeek()}</tr>
