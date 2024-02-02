@@ -32,6 +32,11 @@ function Calendar() {
     setSelectedDate(new Date(date.getFullYear(), date.getMonth(), 1));
   };
 
+  const goToToday = () => {
+    setDate(new Date()); // 오늘의 날짜로 이동합니다.
+    setSelectedDate(new Date()); // 선택된 날짜도 오늘의 날짜로 설정합니다.
+  };
+
   const renderDaysOfWeek = () => {
     return days.map((day) => (
       <th key={day} className="day">
@@ -110,12 +115,15 @@ function Calendar() {
 
   return (
     <div className="calendar-container">
-      <div className="header">
-        <button onClick={prevMonth}>&lt;</button>
-        <div>
+      <div className="calendar-header">
+        <div className="monthMove">
+          <button onClick={prevMonth}>&lt;</button>
+          <button onClick={nextMonth}>&gt;</button>
+          <button onClick={goToToday} className='goToBtn'>오늘</button>
+        </div>
+        <div className='yearsMonth'>
           {monthNames[date.getMonth()]} {date.getFullYear()}년
         </div>
-        <button onClick={nextMonth}>&gt;</button>
       </div>
       <table className="calendar">
         <thead>
