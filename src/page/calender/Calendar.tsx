@@ -8,6 +8,7 @@ function Calendar() {
   const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
 
   // useState에 현재 선택된 날짜를 추가합니다.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const nextMonth = () => {
