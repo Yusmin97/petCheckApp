@@ -1,3 +1,13 @@
+.calendar-container {
+  background-color: rgba(255, 247.52001017332077, 221.00000202655792, 1);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .calendar {
   border-collapse: collapse;
   width: 100%;
@@ -10,7 +20,7 @@
 }
 
 .current-day {
-  background-color: lightblue;
+  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
   border-radius: 50%;
 }
 
