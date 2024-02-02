@@ -21,6 +21,8 @@
   border: none;
   border-radius: 10px;
   background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
+  font-size: 15px;
+  font-weight: bold;
 }
 .goToBtn {
   margin-left: 2vw;
