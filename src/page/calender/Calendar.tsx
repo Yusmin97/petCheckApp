@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
+import ko from 'date-fns/locale/ko'; 
 import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
 
@@ -8,17 +9,13 @@ import './Calendar.css';
 function Calendar() {
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const [inputYear, setInputYear] = useState('');
-  const [inputMonth, setInputMonth] = useState('');
-  const [inputDay, setInputDay] = useState('');
-
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const days = ['일', '월', '화', '수', '목', '금', '토'];
   const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
 
   // useState에 현재 선택된 날짜를 추가합니다.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const nextMonth = () => {
     setDate((prevDate) => {
@@ -49,6 +46,10 @@ function Calendar() {
   const handleDatePickerChange = (selectedDate: any) => {
     setDate(selectedDate);
     setShowDatePicker(false); // DatePicker를 닫습니다.
+  };
+
+  const handleDayClick = (day: any) => {
+    setSelectedDate(day);
   };
 
   const goToToday = () => {
@@ -115,15 +116,14 @@ function Calendar() {
             // 해당 월의 일 수를 표시합니다.
             else {
               // 선택된 날짜가 오늘인지 확인합니다.
-              const isToday =
-                dayCount === today.getDate() &&
-                date.getMonth() === today.getMonth() &&
-                date.getFullYear() === today.getFullYear();
-              // 선택된 날짜가 오늘인 경우에만 스타일을 적용합니다.
-              const classNames = isToday ? 'current-day' : '';
+              const currentDay = new Date(date.getFullYear(), date.getMonth(), dayCount);
+              const isToday = currentDay.getDate() === today.getDate() && currentDay.getMonth() === today.getMonth() && currentDay.getFullYear() === today.getFullYear();
+              const isSelected = currentDay.getTime() === selectedDate.getTime();
+              const classNames = isToday ? 'current-day' : (isSelected ? 'selected-date' : '');
+              dayCount++;
               return (
-                <td key={`${weekIndex}-${dayIndex}`} className={classNames}>
-                  {dayCount++}
+                <td key={`${weekIndex}-${dayIndex}`} className={classNames} onClick={() => handleDayClick(currentDay)}>
+                  {currentDay.getDate()}
                 </td>
               );
             }
@@ -156,6 +156,7 @@ function Calendar() {
             onChange={handleDatePickerChange}
             dateFormat="yyyy-MM-dd"
             placeholderText="날짜 선택"
+            locale={ko}
           />
         </div>
       )}
