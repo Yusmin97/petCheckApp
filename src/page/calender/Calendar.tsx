@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
+
 
 function Calendar() {
   const [date, setDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   const days = ['일', '월', '화', '수', '목', '금', '토'];
   const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
@@ -31,6 +36,15 @@ function Calendar() {
     });
     // 이전 달로 이동할 때마다 선택된 날짜를 해당 달의 첫째 날로 설정합니다.
     setSelectedDate(new Date(date.getFullYear(), date.getMonth(), 1));
+  };
+
+  const handleYearsMonthClick = () => {
+    setShowDatePicker(true);
+  };
+
+  const handleDatePickerConfirm = (date: any) => {
+    setDate(date);
+    setShowDatePicker(false);
   };
 
   const goToToday = () => {
@@ -121,8 +135,8 @@ function Calendar() {
           <button onClick={prevMonth}>&lt;</button>
           <button onClick={nextMonth}>&gt;</button>
         </div>
-        <div className="yearsMonth">
-          {monthNames[date.getMonth()]}
+        <div className="yearsMonth" onClick={handleYearsMonthClick}>
+          {monthNames[date.getMonth()]} {date.getFullYear()}년
         </div>
         <div className="goTo">
           <button onClick={goToToday} className="goToBtn">
@@ -130,6 +144,12 @@ function Calendar() {
           </button>
         </div>
       </div>
+      <DatePicker
+        selected={date}
+        onChange={handleDatePickerConfirm}
+        dateFormat="yyyy-MM-dd"
+        className="date-picker"
+      />
       <table className="calendar">
         <thead>
           <tr>{renderDaysOfWeek()}</tr>
