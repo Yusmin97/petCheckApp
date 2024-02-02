@@ -120,10 +120,14 @@ function Calendar() {
         <div className="monthMove">
           <button onClick={prevMonth}>&lt;</button>
           <button onClick={nextMonth}>&gt;</button>
-          <button onClick={goToToday} className='goToBtn'>오늘</button>
         </div>
-        <div className='yearsMonth'>
-          {monthNames[date.getMonth()]} {date.getFullYear()}년
+        <div className="yearsMonth">
+          {monthNames[date.getMonth()]}
+        </div>
+        <div className="goTo">
+          <button onClick={goToToday} className="goToBtn">
+            오늘
+          </button>
         </div>
       </div>
       <table className="calendar">
