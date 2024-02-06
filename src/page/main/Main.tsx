@@ -24,7 +24,7 @@ function Main() {
         </div>
       </div>
       <div className="mainCalendar">
-        <Calendar />
+        <Calendar size="85vw 35vh" />
       </div>
     </div>
   );

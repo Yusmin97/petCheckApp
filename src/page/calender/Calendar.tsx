@@ -5,7 +5,10 @@ import ko from 'date-fns/locale/ko';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
 
-function Calendar() {
+function Calendar(size:any) {
+  // size에 따라 다른 클래스 적용
+  const calendarClassName = size === 'main' ? 'mainCalendar' : 'calendar-container';
+
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -144,7 +147,7 @@ function Calendar() {
   };
 
   return (
-    <div className="calendar-container">
+    <div className={calendarClassName}>
       <div className="calendar-header">
         <div className="monthMove">
           <button onClick={prevMonth}>&lt;</button>
