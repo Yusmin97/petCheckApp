@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import ko from 'date-fns/locale/ko'; 
+import ko from 'date-fns/locale/ko';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
-
 
 function Calendar() {
   const [date, setDate] = useState(new Date());
@@ -46,6 +45,7 @@ function Calendar() {
   const handleDatePickerChange = (selectedDate: any) => {
     setDate(selectedDate);
     setShowDatePicker(false); // DatePicker를 닫습니다.
+    setSelectedDate(selectedDate);
   };
 
   const handleDayClick = (day: any) => {
@@ -68,6 +68,14 @@ function Calendar() {
   const renderCalendar = () => {
     // 현재 날짜를 가져옵니다.
     const today = new Date();
+
+    const isDateSelected = (currentDay: any) => {
+      return (
+        currentDay.getDate() === selectedDate.getDate() &&
+        currentDay.getMonth() === selectedDate.getMonth() &&
+        currentDay.getFullYear() === selectedDate.getFullYear()
+      );
+    };
 
     // 해당 월의 첫째 날과 마지막 날을 구합니다.
     const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -117,9 +125,12 @@ function Calendar() {
             else {
               // 선택된 날짜가 오늘인지 확인합니다.
               const currentDay = new Date(date.getFullYear(), date.getMonth(), dayCount);
-              const isToday = currentDay.getDate() === today.getDate() && currentDay.getMonth() === today.getMonth() && currentDay.getFullYear() === today.getFullYear();
-              const isSelected = currentDay.getTime() === selectedDate.getTime();
-              const classNames = isToday ? 'current-day' : (isSelected ? 'selected-date' : '');
+              const isToday =
+                currentDay.getDate() === today.getDate() &&
+                currentDay.getMonth() === today.getMonth() &&
+                currentDay.getFullYear() === today.getFullYear();
+              const isSelected = isDateSelected(currentDay);
+              const classNames = isToday ? 'current-day' : isSelected ? 'selected-date' : '';
               dayCount++;
               return (
                 <td key={`${weekIndex}-${dayIndex}`} className={classNames} onClick={() => handleDayClick(currentDay)}>
