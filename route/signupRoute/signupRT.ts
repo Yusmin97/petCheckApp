@@ -31,7 +31,7 @@ router.post('/check-duplicate-id', async (req: Request, res: Response) => {
     const [result] = await conn.query('SELECT user_id FROM users WHERE user_id = ?', [user_id]);
     console.log('Query result:', result);
 
-    if (result && result.length > 0) {
+    if (result) {
       // 아이디가 중복되지 않음
       await conn.commit(); // 트랜잭션 커밋
       res.status(200).json({ isAvailable: true });
