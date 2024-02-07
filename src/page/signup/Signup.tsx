@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import axios from 'axios';
 import './Signup.css';
 
@@ -18,6 +19,9 @@ const SignUpPage: React.FC = () => {
   });
 
   const [isIdAvailable, setIsIdAvailable] = useState<boolean>(false);
+  const [isDuplicateChecked, setIsDuplicateChecked] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   const handleCheckDuplicateId = () => {
     // 아이디가 비어 있는지 확인
@@ -32,9 +36,11 @@ const SignUpPage: React.FC = () => {
       .then((response) => {
         if (response.data.isAvailable) {
           setIsIdAvailable(false);
+          setIsDuplicateChecked(false);
           alert('이미 사용 중인 아이디입니다.');
         } else {
           setIsIdAvailable(true);
+          setIsDuplicateChecked(true);
           alert('사용 가능한 아이디입니다.');
         }
       })
@@ -72,11 +78,18 @@ const SignUpPage: React.FC = () => {
       alert('비밀번호가 일치하지 않습니다.');
       return;
     }
+
+    // 중복 체크가 완료되지 않았을 경우 회원가입을 진행하지 않음
+    if (!isDuplicateChecked) {
+      alert('중복 체크를 해주세요.');
+      return;
+    }
+    
     // 회원가입 API 호출
     axios
       .post('http://localhost:3001/signup', userData)
       .then((response) => {
-        alert(response.data.message);
+        navigate('/petinfo');
         // 회원가입 성공 시 필요한 작업 수행
       })
       .catch((error) => {
