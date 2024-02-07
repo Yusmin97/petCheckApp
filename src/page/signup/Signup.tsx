@@ -20,6 +20,12 @@ const SignUpPage: React.FC = () => {
   const [isIdAvailable, setIsIdAvailable] = useState<boolean>(false);
 
   const handleCheckDuplicateId = () => {
+    // 아이디가 비어 있는지 확인
+    if (!userData.user_id) {
+      alert('아이디를 입력해주세요.');
+      return;
+    }
+
     // 중복 아이디 체크 API 호출
     axios
       .post('http://localhost:3001/check-duplicate-id', { user_id: userData.user_id })
@@ -41,6 +47,17 @@ const SignUpPage: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
+
+    // 비밀번호와 비밀번호 확인이 일치하는지 확인하여 스타일을 변경합니다.
+    if (name === 'user_pw_check') {
+      if (value === userData.user_pw) {
+        // 비밀번호와 비밀번호 확인이 일치하면 초록색으로 변경합니다.
+        document.querySelector('.duplicatePasswordcheck')?.classList.add('match');
+      } else {
+        // 비밀번호와 비밀번호 확인이 일치하지 않으면 빨간색으로 유지합니다.
+        document.querySelector('.duplicatePasswordcheck')?.classList.remove('match');
+      }
+    }
   };
 
   const handleSignUp = () => {

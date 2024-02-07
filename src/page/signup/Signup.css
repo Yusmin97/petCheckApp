@@ -129,6 +129,10 @@
   width: 10px;
   height: 10px;
 }
+.duplicatePasswordcheck.match {
+  background-color: rgba(0, 255, 0, 1); /* 초록색으로 변경 */
+}
+
 .duplicateId {
   width: 70px;
   height: 20px;
