@@ -25,11 +25,11 @@ const SignUpPage: React.FC = () => {
       .post('http://localhost:3001/check-duplicate-id', { user_id: userData.user_id })
       .then((response) => {
         if (response.data.isAvailable) {
-          setIsIdAvailable(true);
-          alert('사용 가능한 아이디입니다.');
-        } else {
           setIsIdAvailable(false);
           alert('이미 사용 중인 아이디입니다.');
+        } else {
+          setIsIdAvailable(true);
+          alert('사용 가능한 아이디입니다.');
         }
       })
       .catch((error) => {
@@ -44,6 +44,12 @@ const SignUpPage: React.FC = () => {
   };
 
   const handleSignUp = () => {
+    // 입력 필드 중 하나라도 비어있으면 에러 메시지를 표시
+    if (!userData.user_id || !userData.user_pw || !userData.user_pw_check || !userData.user_name) {
+      alert('모든 항목을 입력해주세요.');
+      return;
+    }
+
     // 비밀번호와 비밀번호 확인이 일치하는지 확인
     if (userData.user_pw !== userData.user_pw_check) {
       alert('비밀번호가 일치하지 않습니다.');
@@ -74,7 +80,9 @@ const SignUpPage: React.FC = () => {
           value={userData.user_id}
           onChange={handleInputChange}
         />
-        <button className="duplicateId" onClick={handleCheckDuplicateId}>중복체크</button>
+        <button className="duplicateId" onClick={handleCheckDuplicateId}>
+          중복체크
+        </button>
         <div className={isIdAvailable ? 'duplicateIdcheck available' : 'duplicateIdcheck'}></div>
       </div>
       <div className="signupPassword">
