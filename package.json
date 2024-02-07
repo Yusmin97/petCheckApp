@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
+    "@types/mysql": "^2.15.25",
     "ts-node": "^10.9.2"
   }
 }
