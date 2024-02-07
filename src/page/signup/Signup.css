@@ -104,6 +104,7 @@
   margin-left: 45vw;
   border: none;
 }
+
 .duplicateIdcheck {
   position: absolute; /* 절대 위치 설정 */
   top: 50%; /* 상단 기준으로 중앙 정렬 */
@@ -114,6 +115,10 @@
   width: 10px;
   height: 10px;
 }
+.duplicateIdcheck.available {
+  background-color: rgba(0, 255, 0, 1); /* 초록색으로 변경 */
+}
+
 .duplicatePasswordcheck {
   position: absolute; /* 절대 위치 설정 */
   top: 50%; /* 상단 기준으로 중앙 정렬 */
@@ -124,28 +129,7 @@
   width: 10px;
   height: 10px;
 }
-.duplicateEmailcheck {
-  position: absolute; /* 절대 위치 설정 */
-  top: 50%; /* 상단 기준으로 중앙 정렬 */
-  transform: translateY(-50%); /* 세로 중앙 정렬 */
-  right: -20px; /* 우측에서 10px만큼 떨어지도록 설정 */
-  border-radius: 50%;
-  background-color: rgba(255, 0, 0, 1);
-  width: 10px;
-  height: 10px;
-}
-
 .duplicateId {
-  width: 70px;
-  height: 20px;
-  font-family: Inter;
-  text-align: center;
-  font-size: 12px;
-  background-color: transparent;
-  border: none;
-  margin-left: 10vw;
-}
-.duplicateEmail {
   width: 70px;
   height: 20px;
   font-family: Inter;

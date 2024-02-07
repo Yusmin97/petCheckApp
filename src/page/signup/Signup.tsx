@@ -17,6 +17,27 @@ const SignUpPage: React.FC = () => {
     user_name: '',
   });
 
+  const [isIdAvailable, setIsIdAvailable] = useState<boolean>(false);
+
+  const handleCheckDuplicateId = () => {
+    // 중복 아이디 체크 API 호출
+    axios
+      .post('http://localhost:3001/check-duplicate-id', { user_id: userData.user_id })
+      .then((response) => {
+        if (response.data.isAvailable) {
+          setIsIdAvailable(true);
+          alert('사용 가능한 아이디입니다.');
+        } else {
+          setIsIdAvailable(false);
+          alert('이미 사용 중인 아이디입니다.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error checking duplicate ID', error);
+        alert('중복 아이디를 확인하는 중 오류가 발생했습니다.');
+      });
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
@@ -28,10 +49,9 @@ const SignUpPage: React.FC = () => {
       alert('비밀번호가 일치하지 않습니다.');
       return;
     }
-
     // 회원가입 API 호출
     axios
-      .post('/signup', userData)
+      .post('http://localhost:3001/signup', userData)
       .then((response) => {
         alert(response.data.message);
         // 회원가입 성공 시 필요한 작업 수행
@@ -54,8 +74,8 @@ const SignUpPage: React.FC = () => {
           value={userData.user_id}
           onChange={handleInputChange}
         />
-        <button className="duplicateId">중복체크</button>
-        <div className="duplicateIdcheck"></div>
+        <button className="duplicateId" onClick={handleCheckDuplicateId}>중복체크</button>
+        <div className={isIdAvailable ? 'duplicateIdcheck available' : 'duplicateIdcheck'}></div>
       </div>
       <div className="signupPassword">
         <input
@@ -88,7 +108,9 @@ const SignUpPage: React.FC = () => {
           onChange={handleInputChange}
         />
       </div>
-      <button className="signup_btn" onClick={handleSignUp}>회원가입</button>
+      <button className="signup_btn" onClick={handleSignUp}>
+        회원가입
+      </button>
     </div>
   );
 };
