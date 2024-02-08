@@ -48,4 +48,8 @@ router.post('/check-duplicate-id', async (req: Request, res: Response) => {
   }
 });
 
+router.post('/login', async (req: Request, res: Response) => {
+  
+})
+
 export default router;
