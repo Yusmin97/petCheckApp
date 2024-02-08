@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
 import mypetQuery from '../../src/database/myPet';
+import { hashPassword, comparePasswords } from './hashPassword';
 
 const router: Router = Router();
 
@@ -8,8 +9,15 @@ router.post('/signup', async (req: Request, res: Response) => {
   const { user_id, user_pw, user_name } = req.body;
 
   try {
+    // 비밀번호를 해싱합니다.
+    const hashedPassword = await hashPassword(user_pw);
+
     // 쿼리 실행
-    await mypetQuery('INSERT INTO users (user_id, user_pw, user_name) VALUES (?, ?, ?)', [user_id, user_pw, user_name]);
+    await mypetQuery('INSERT INTO users (user_id, user_pw, user_name) VALUES (?, ?, ?)', [
+      user_id,
+      hashedPassword,
+      user_name,
+    ]);
 
     res.status(201).json({ message: '회원가입이 성공적으로 완료되었습니다.' });
   } catch (err) {
@@ -46,7 +54,10 @@ router.post('/login', async (req: Request, res: Response) => {
     if (user.length > 0) {
       const storedUserPw = user[0].user_pw;
 
-      if (storedUserPw === user_pw) {
+      // 비밀번호 검증
+      const isPasswordMatch = await comparePasswords(user_pw, storedUserPw);
+
+      if (isPasswordMatch) {
         res.status(200).json({ message: '로그인 성공!' });
       } else {
         res.status(401).json({ message: '아이디 또는 비밀번호가 올바르지 않습니다.' });
@@ -61,5 +72,3 @@ router.post('/login', async (req: Request, res: Response) => {
 });
 
 export default router;
-
-
