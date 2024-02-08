@@ -122,3 +122,11 @@
   background: transparent;
   border: none;
 }
+.userProfile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.selectedIcon {
+  font-size: 30px;
+}
