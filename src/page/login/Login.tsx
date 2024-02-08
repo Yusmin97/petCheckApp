@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import axios from 'axios';
 import './Login.css';
 
@@ -13,6 +14,8 @@ const LoginPage: React.FC = () => {
     user_pw: '',
   });
 
+  const navigate = useNavigate();
+
   // 사용자가 값을 입력할 때마다 해당 입력 필드의 상태를 업데이트
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -25,8 +28,7 @@ const LoginPage: React.FC = () => {
       .post('http://localhost:3001/login', userData)
       .then((response) => {
         // 로그인 성공 시 필요한 작업 수행
-        console.log(response.data);
-        alert('로그인에 성공했습니다.');
+        navigate('/main')
       })
       .catch((error) => {
         // 로그인 실패 시 에러 처리
