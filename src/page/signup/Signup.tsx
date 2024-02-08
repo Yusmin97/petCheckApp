@@ -50,6 +50,7 @@ const SignUpPage: React.FC = () => {
       });
   };
 
+  // 사용자가 값을 입력할 때마다 해당 입력 필드의 상태를 업데이트
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
