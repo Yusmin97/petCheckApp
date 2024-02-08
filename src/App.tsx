@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
 import Router from './page/Route';
+import { AuthProvider } from './authContext/authProvider';
 
 function App() {
   return (
-    <div className="App">
-      <Router />
-    </div>
+    <AuthProvider>
+      <div className="App">
+        <Router />
+      </div>
+    </AuthProvider>
   );
 }
 
