@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { useAuth } from '../../authContext/authProvider';
 import axios from 'axios';
 import './Login.css';
 
@@ -13,6 +14,8 @@ const LoginPage: React.FC = () => {
     user_id: '',
     user_pw: '',
   });
+  
+  const { setAuthState } = useAuth(); // 인증 상태 변경을 위해 useAuth 훅 사용
 
   const navigate = useNavigate();
 
@@ -28,6 +31,8 @@ const LoginPage: React.FC = () => {
       .post('http://localhost:3001/login', userData)
       .then((response) => {
         // 로그인 성공 시 필요한 작업 수행
+        // 로그인 성공 시 전역 상태 업데이트
+        setAuthState({ isLoggedIn: true, userId: userData.user_id });
         navigate('/main')
       })
       .catch((error) => {
