@@ -122,6 +122,16 @@
   background: transparent;
   border: none;
 }
+.calendarBtn {
+  width: 75vw;
+  height: 25vh;
+  font-family: Inter;
+  text-align: center;
+  font-size: 100px;
+  background: transparent;
+  border: none;
+}
+
 .userProfile {
   display: flex;
   align-items: center;
