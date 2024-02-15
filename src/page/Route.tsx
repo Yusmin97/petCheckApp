@@ -5,7 +5,7 @@ import SignUpPage from "./signup/Signup";
 import PetInfo from "./petInfo/PetInfo";
 import Main from "./main/Main";
 
-import Calendar from "./calender/Calendar";
+import Calendar from "./calendar/Calendar";
 
 
 function Router() {
