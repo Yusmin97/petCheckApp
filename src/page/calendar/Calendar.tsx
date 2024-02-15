@@ -5,13 +5,16 @@ import ko from 'date-fns/locale/ko';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
 
-function Calendar(size:any) {
+function Calendar(size: any) {
   // size에 따라 다른 클래스 적용
   const calendarClassName = size === 'main' ? 'mainCalendar' : 'calendar-container';
 
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [showAddEventForm, setShowAddEventForm] = useState(false); // 일정 추가 폼을 보이기 위한 상태
+  const [eventTitle, setEventTitle] = useState(''); // 추가할 일정의 제목을 저장하는 상태
+  const [events, setEvents] = useState<{ title: string; startDate: Date; }[]>([]); // 일정 목록을 관리하는 상태
 
   const days = ['일', '월', '화', '수', '목', '금', '토'];
   const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
@@ -53,6 +56,23 @@ function Calendar(size:any) {
 
   const handleDayClick = (day: any) => {
     setSelectedDate(day);
+    // 일정 추가 폼을 나타냅니다.
+    setShowAddEventForm(true);
+  };
+
+  const addEvent = () => {
+    // 새로운 일정을 생성합니다.
+    const newEvent = {
+      title: eventTitle,
+      startDate: selectedDate, // 선택된 날짜를 일정의 시작일로 설정합니다.
+      // 다른 필드들도 추가할 수 있습니다.
+    };
+    // 새로운 일정을 일정 목록에 추가합니다.
+    setEvents([...events, newEvent]);
+    // 일정 추가 폼을 닫습니다.
+    setShowAddEventForm(false);
+    // 일정 제목 필드를 초기화합니다.
+    setEventTitle('');
   };
 
   const goToToday = () => {
@@ -148,6 +168,13 @@ function Calendar(size:any) {
 
   return (
     <div className={calendarClassName}>
+      {showAddEventForm && (
+        <div className="add-event-form">
+          <input type="text" placeholder="일정 제목" value={eventTitle} onChange={(e) => setEventTitle(e.target.value)} />
+          {/* 일정 설명, 시작일시, 종료일시 등의 필드를 추가할 수 있습니다. */}
+          <button onClick={addEvent}>일정 추가</button>
+        </div>
+      )}
       <div className="calendar-header">
         <div className="monthMove">
           <button onClick={prevMonth}>&lt;</button>
