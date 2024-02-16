@@ -1,26 +1,44 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
+import axios from 'axios';
+import Modal from './Modal';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
 
-function Calendar(size: any) {
-  // size에 따라 다른 클래스 적용
-  const calendarClassName = size === 'main' ? 'mainCalendar' : 'calendar-container';
+interface Schedule {
+  title: string;
+  start_date: Date;
+  end_date: Date;
+}
 
+function Calendar() {
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [showAddEventForm, setShowAddEventForm] = useState(false); // 일정 추가 폼을 보이기 위한 상태
-  const [eventTitle, setEventTitle] = useState(''); // 추가할 일정의 제목을 저장하는 상태
-  const [events, setEvents] = useState<{ title: string; startDate: Date; }[]>([]); // 일정 목록을 관리하는 상태
+  const [schedules, setSchedules] = useState<Schedule[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   const days = ['일', '월', '화', '수', '목', '금', '토'];
   const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
 
-  // useState에 현재 선택된 날짜를 추가합니다.
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  useEffect(() => {
+    fetchSchedules();
+  }, []);
+
+  const fetchSchedules = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/get-schedules');
+      setSchedules(response.data);
+    } catch (error) {
+      console.error('Error fetching schedules: ', error);
+    }
+  };
 
   const nextMonth = () => {
     setDate((prevDate) => {
@@ -56,23 +74,7 @@ function Calendar(size: any) {
 
   const handleDayClick = (day: any) => {
     setSelectedDate(day);
-    // 일정 추가 폼을 나타냅니다.
-    setShowAddEventForm(true);
-  };
-
-  const addEvent = () => {
-    // 새로운 일정을 생성합니다.
-    const newEvent = {
-      title: eventTitle,
-      startDate: selectedDate, // 선택된 날짜를 일정의 시작일로 설정합니다.
-      // 다른 필드들도 추가할 수 있습니다.
-    };
-    // 새로운 일정을 일정 목록에 추가합니다.
-    setEvents([...events, newEvent]);
-    // 일정 추가 폼을 닫습니다.
-    setShowAddEventForm(false);
-    // 일정 제목 필드를 초기화합니다.
-    setEventTitle('');
+    setShowModal(true); // 모달 표시
   };
 
   const goToToday = () => {
@@ -154,11 +156,23 @@ function Calendar(size: any) {
                 currentDay.getFullYear() === today.getFullYear();
               const isSelected = isDateSelected(currentDay);
               const classNames = isToday ? 'current-day' : isSelected ? 'selected-date' : '';
+              // 해당 날짜에 대한 일정을 가져옵니다.
+              const scheduleForDate = schedules.find((schedule) => {
+                const scheduleDate = new Date(schedule.start_date);
+                return (
+                  scheduleDate.getDate() === currentDay.getDate() &&
+                  scheduleDate.getMonth() === currentDay.getMonth() &&
+                  scheduleDate.getFullYear() === currentDay.getFullYear()
+                );
+              });
               dayCount++;
               return (
                 <td key={`${weekIndex}-${dayIndex}`} className={classNames} onClick={() => handleDayClick(currentDay)}>
-                  {currentDay.getDate()}
-                </td>
+                <div className="cell-content">
+                  <div className="date">{currentDay.getDate()}</div>
+                  {scheduleForDate && <div className="schedule">{scheduleForDate.title}</div>}
+                </div>
+              </td>
               );
             }
           })}
@@ -166,14 +180,57 @@ function Calendar(size: any) {
       ));
   };
 
+  const addSchedule = async () => {
+    try {
+      await axios.post('http://localhost:3001/add-schedule', {
+        title,
+        description,
+        start_date: startDate,
+        end_date: endDate,
+      });
+      fetchSchedules(); // 일정을 추가한 후 다시 불러옵니다.
+      setShowModal(false); // 모달 닫기
+      // 추가한 일정을 초기화합니다.
+      setTitle('');
+      setDescription('');
+      setStartDate('');
+      setEndDate('');
+    } catch (error) {
+      console.error('Error adding schedule: ', error);
+    }
+  };
+
   return (
-    <div className={calendarClassName}>
-      {showAddEventForm && (
-        <div className="add-event-form">
-          <input type="text" placeholder="일정 제목" value={eventTitle} onChange={(e) => setEventTitle(e.target.value)} />
-          {/* 일정 설명, 시작일시, 종료일시 등의 필드를 추가할 수 있습니다. */}
-          <button onClick={addEvent}>일정 추가</button>
-        </div>
+    <div className="calendar-container">
+      {/* 캘린더 표 및 기타 요소 */}
+      {showModal && (
+        <Modal>
+          {/* 모달 내용 */}
+          <div>
+            <input
+              type="text"
+              placeholder="이벤트 제목"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              name="title"
+            />
+            <input
+              type="text"
+              placeholder="이벤트 설명"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              name="description"
+            />
+            <input
+              type="datetime-local"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              name="start_date"
+            />
+            <input type="datetime-local" value={endDate} onChange={(e) => setEndDate(e.target.value)} name="end_date" />
+            <button onClick={addSchedule}>저장</button>
+          </div>
+        </Modal>
       )}
       <div className="calendar-header">
         <div className="monthMove">
