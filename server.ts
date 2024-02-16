@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import signuploginRT from './route/signup-loginRoute/signup-loginRT'
 import calendarRT from './route/calendarRoute/calendarRT'
+import petinfoRT from './route/petInfoRoute/petinfoRT'
 
 const app: Express = express();
 const port: number = 3001;
@@ -15,6 +16,8 @@ app.use(cors());
 app.use('/', signuploginRT);
 // 캘린더 API 엔드포인트
 app.use('/', calendarRT);
+// 반려동물정보 API 엔드포인트
+app.use('/', petinfoRT);
 
 // 서버 시작
 app.listen(port, () => {
