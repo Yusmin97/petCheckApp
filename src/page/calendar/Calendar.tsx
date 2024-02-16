@@ -157,20 +157,15 @@ function Calendar() {
               const isSelected = isDateSelected(currentDay);
               const classNames = isToday ? 'current-day' : isSelected ? 'selected-date' : '';
               // 해당 날짜에 대한 일정을 가져옵니다.
-              const scheduleForDate = schedules.find((schedule) => {
-                const scheduleDate = new Date(schedule.start_date);
-                return (
-                  scheduleDate.getDate() === currentDay.getDate() &&
-                  scheduleDate.getMonth() === currentDay.getMonth() &&
-                  scheduleDate.getFullYear() === currentDay.getFullYear()
-                );
-              });
+              const schedulesForDate = getSchedulesForDate(currentDay);
               dayCount++;
               return (
                 <td key={`${weekIndex}-${dayIndex}`} className={classNames} onClick={() => handleDayClick(currentDay)}>
                 <div className="cell-content">
                   <div className="date">{currentDay.getDate()}</div>
-                  {scheduleForDate && <div className="schedule">{scheduleForDate.title}</div>}
+                  {schedulesForDate.map((schedule, index) => (
+                    <div key={index} className="schedule">{schedule.title}</div>
+                  ))}
                 </div>
               </td>
               );
@@ -180,6 +175,17 @@ function Calendar() {
       ));
   };
 
+  // 각 날짜에 대한 일정 목록을 가져오는 함수
+  const getSchedulesForDate = (currentDay: Date) => {
+    return schedules.filter((schedule) => {
+      const scheduleDate = new Date(schedule.start_date);
+      return (
+        scheduleDate.getDate() === currentDay.getDate() &&
+        scheduleDate.getMonth() === currentDay.getMonth() &&
+        scheduleDate.getFullYear() === currentDay.getFullYear()
+      );
+    });
+  };
   const addSchedule = async () => {
     try {
       await axios.post('http://localhost:3001/add-schedule', {
