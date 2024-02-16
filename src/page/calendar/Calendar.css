@@ -1,7 +1,7 @@
 .calendar-container {
   background-color: rgba(255, 247.52001017332077, 221.00000202655792, 1);
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@
 }
 
 .calendar-header {
-  width: 100%;
+  width: 100vw;
   height: 10vh;
   display: flex;
   justify-content: space-between;
@@ -31,7 +31,7 @@
   align-items: center;
 }
 .yearsMonth {
-  width: 100%;
+  width: 100vw;
   height: 10vh;
   font-size: 1.2rem;
   display: flex;
@@ -55,8 +55,8 @@
 
 .calendar {
   border-collapse: collapse;
-  width: 100%;
-  height: 90vh;
+  width: 100vw;
+  table-layout: fixed;
 }
 
 .calendar th {
@@ -70,6 +70,7 @@
   padding: 8px;
   text-align: right;
   vertical-align: top;
+  height: 14.3vh;
 }
 
 .current-day {
@@ -83,4 +84,14 @@
 
 .not-current-month {
   color: #ccc; /* 흐릿한 색상 */
+}
+
+.schedule {
+  background-color: #ccc;
+  white-space: nowrap; /* 내용이 셀을 벗어나도 줄바꿈 방지 */
+  overflow: hidden; /* 내용이 셀을 벗어나면 자르기 */
+  text-overflow: ellipsis; /* 자르기된 내용에 대한 표시 (...) */
+  margin-top: 1vw;
+  font-size: 14px;
+  text-align: center;
 }
