@@ -56,6 +56,7 @@
 .calendar {
   border-collapse: collapse;
   width: 100vw;
+  height: 90vh;
   table-layout: fixed;
 }
 
@@ -70,7 +71,7 @@
   padding: 8px;
   text-align: right;
   vertical-align: top;
-  height: 14.3vh;
+  height: 10vh;
 }
 
 .current-day {
