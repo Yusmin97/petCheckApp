@@ -1,6 +1,6 @@
 // AuthContext.tsx
 
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 
 // 인증 상태 인터페이스 정의
 interface AuthState {
@@ -24,8 +24,16 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Context Provider
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // 인증 상태 및 상태 설정 함수를 useState 훅을 통해 정의
-  const [authState, setAuthState] = useState<AuthState>(initialAuthState);
+  // 로컬 스토리지에서 인증 정보를 가져와 초기 상태 설정
+  const [authState, setAuthState] = useState<AuthState>(() => {
+    const storedAuthState = localStorage.getItem('authState');
+    return storedAuthState ? JSON.parse(storedAuthState) : initialAuthState;
+  });
+
+  // 인증 정보가 변경될 때마다 로컬 스토리지에 저장
+  useEffect(() => {
+    localStorage.setItem('authState', JSON.stringify(authState));
+  }, [authState]);
 
   return (
     // 인증 컨텍스트 제공자를 사용하여 자식 컴포넌트에 컨텍스트 제공
@@ -46,4 +54,3 @@ export const useAuth = () => {
   // 인증 컨텍스트 반환
   return context;
 };
-
