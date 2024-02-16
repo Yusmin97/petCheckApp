@@ -161,13 +161,15 @@ function Calendar() {
               dayCount++;
               return (
                 <td key={`${weekIndex}-${dayIndex}`} className={classNames} onClick={() => handleDayClick(currentDay)}>
-                <div className="cell-content">
-                  <div className="date">{currentDay.getDate()}</div>
+                  <div className="cell-content">
+                    <div className="date">{currentDay.getDate()}</div>
+                  </div>
                   {schedulesForDate.map((schedule, index) => (
-                    <div key={index} className="schedule">{schedule.title}</div>
+                    <div key={index} className="schedule">
+                      {schedule.title}
+                    </div>
                   ))}
-                </div>
-              </td>
+                </td>
               );
             }
           })}
