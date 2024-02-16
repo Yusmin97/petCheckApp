@@ -90,7 +90,6 @@ const SignUpPage: React.FC = () => {
     axios
       .post('http://localhost:3001/signup', userData)
       .then((response) => {
-        navigate('/petinfo');
         // 회원가입 성공 시 필요한 작업 수행
       })
       .catch((error) => {
