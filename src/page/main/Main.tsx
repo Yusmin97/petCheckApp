@@ -28,6 +28,10 @@ function Main() {
     navigate('/calendar');
   }
 
+  const handlePetInfoClick = () => {
+    navigate('/petinfo');
+  }
+
   return (
     <div className="container">
       <div className="userRender">
@@ -53,7 +57,7 @@ function Main() {
       </div>
       <div className="petRender">
         <div className="plusPetBtn">
-          <button className="plusBtn">+</button>
+          <button className="plusBtn" onClick={handlePetInfoClick}>+</button>
         </div>
       </div>
       <div className="hospital_walk">
