@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
 import axios from 'axios';
+import { useAuth } from '../../authContext/authProvider';
 import Modal from './Modal';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
@@ -23,6 +24,9 @@ function Calendar() {
   const [description, setDescription] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const authState  = useAuth();
+
+  console.log('전역 상태:', authState);
 
   const days = ['일', '월', '화', '수', '목', '금', '토'];
   const monthNames = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
@@ -33,7 +37,7 @@ function Calendar() {
 
   const fetchSchedules = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/get-schedules');
+      const response = await axios.get(`http://localhost:3001/get-schedules?user_id=${authState.userId}`);
       setSchedules(response.data);
     } catch (error) {
       console.error('Error fetching schedules: ', error);
@@ -195,6 +199,7 @@ function Calendar() {
         description,
         start_date: startDate,
         end_date: endDate,
+        user_id: authState.userId, // 사용자 ID를 추가합니다.
       });
       fetchSchedules(); // 일정을 추가한 후 다시 불러옵니다.
       setShowModal(false); // 모달 닫기
