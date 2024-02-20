@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 import { useAuth } from '../../authContext/authProvider';
 import './PetInfo.css';
 
@@ -24,6 +25,7 @@ function PetInfoForm() {
     pet_blood: '',
   });
   const { authState } = useAuth();
+  const navigate = useNavigate();
 
   console.log('전역 상태:', authState);
 
@@ -43,6 +45,7 @@ function PetInfoForm() {
         user_id: authState.userId, // 사용자의 아이디를 함께 전송
       });
       console.log(response.data);
+      navigate('/main')
       // handle success
     } catch (error) {
       console.error('Error:', error);
@@ -54,6 +57,16 @@ function PetInfoForm() {
     <div className="container">
       <div className="petInfoTitle">반려동물 정보</div>
       <form onSubmit={handleSubmit}>
+        <div className="petEmogi">
+          <label htmlFor="emogi" className="placeholderEmogi">
+            종류:
+          </label>
+          <select className="petEmogiSelect" id="emogi" name="pet_emogi" onChange={handleChange}>
+            <option value=""></option>
+            <option value="1F436">강아지</option>
+            <option value="1F431">고양이</option>
+          </select>
+        </div>
         <div className="petName">
           <label htmlFor="name" className="placeholderName">
             이름:
@@ -81,7 +94,7 @@ function PetInfoForm() {
             중성화 유무:
           </label>
           <select className="petNeuteredSelect" id="neutered" name="pet_neutered" onChange={handleChange}>
-            <option value="" ></option>
+            <option value=""></option>
             <option value="yes">O</option>
             <option value="no">X</option>
           </select>
@@ -103,7 +116,7 @@ function PetInfoForm() {
             혈액형:
           </label>
           <select className="petBloodSelect" id="blood_type" name="pet_blood" onChange={handleChange}>
-            <option value="" ></option>
+            <option value=""></option>
             <option value="A">A</option>
             <option value="B">B</option>
             <option value="AB">AB</option>

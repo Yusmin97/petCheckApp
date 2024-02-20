@@ -19,6 +19,7 @@
   border-top-right-radius: 30px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
+  margin-top: 2vh;
 }
 .petNameInput {
   width: 65vw;
@@ -38,6 +39,35 @@
 }
 .petNameInput:focus + .placeholderName {
   display: none;
+}
+
+.petEmogi {
+  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
+  width: 75vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.petEmogiSelect {
+  width: 70vw;
+  height: 5vh;
+  font-family: Inter;
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  text-indent: 55px;
+}
+.placeholderEmogi {
+  position: absolute;
+  top: 10;
+  left: 20px;
+  pointer-events: none;
+  color: #000; /* 힌트의 색상 */
 }
 
 .petGender {
