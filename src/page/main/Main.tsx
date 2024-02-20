@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../authContext/authProvider';
+// import ReactEmoji from 'react-emoji-render';
+import axios from 'axios';
 import { useNavigate } from 'react-router';
 import './Main.css';
+
+interface Pet {
+  pet_id: number;
+  pet_name: string;
+  pet_emoji: string;
+}
 
 function Main() {
   const navigate = useNavigate();
 
   const [selectedIcon, setSelectedIcon] = useState('🧑');
   const [showButton, setShowButton] = useState(false);
+  const [pets, setPets] = useState<Pet[]>([]);
   const { authState, setAuthState } = useAuth();
 
   useEffect(() => {
@@ -17,6 +26,20 @@ function Main() {
       setSelectedIcon(savedIcon);
     }
   }, []); // 컴포넌트가 처음 렌더링될 때만 실행
+
+  useEffect(() => {
+    // 사용자의 반려동물 정보를 가져오는 함수
+    const fetchPets = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/get-petInfo?user_id=${authState.userId}`);
+        setPets(response.data); // 서버에서 받아온 데이터로 상태 업데이트
+      } catch (error) {
+        console.error('Error fetching pets:', error);
+      }
+    };
+
+    fetchPets(); // 함수 호출
+  }, [authState.userId]); // authState.userId가 변경될 때마다 실행
 
   // 로그아웃 핸들러
   const handleLogout = () => {
@@ -78,8 +101,8 @@ function Main() {
         )}
         {/* 사용자가 로그인되어 있을 때 보여지는 컴포넌트 */}
         {authState.isLoggedIn ? (
-          <div>
-            <h1>{authState.userId}님 어서오세요!</h1>
+          <div className="userInfo">
+            <h1 className="welcomeUser">{authState.userId}님 어서오세요!</h1>
             <button onClick={handleLogout}>Logout</button>
             {/* 이하 사용자가 로그인된 상태에서 보여지는 내용 */}
           </div>
@@ -96,6 +119,15 @@ function Main() {
           <button className="plusBtn" onClick={handlePetInfoClick}>
             +
           </button>
+        </div>
+        <div>
+          <ul>
+            {pets.map((pet) => (
+              <li className="petEmogiMain" key={pet.pet_id}>
+                {pet.pet_emoji && String.fromCodePoint(parseInt(pet.pet_emoji.replace('U+', ''), 16))}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <div className="hospital_walk">

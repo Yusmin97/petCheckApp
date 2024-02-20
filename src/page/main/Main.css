@@ -140,3 +140,17 @@
 .selectedIcon {
   font-size: 30px;
 }
+
+.userInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2vw;
+}
+
+.welcomeUser {
+  font-size: 20px;
+}
+.petEmogiMain {
+  font-size: 10px;
+}
