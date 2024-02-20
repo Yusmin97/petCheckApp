@@ -25,7 +25,7 @@ function Calendar() {
   const [description, setDescription] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const { authState, setAuthState } = useAuth();
+  const { authState } = useAuth();
 
   console.log('전역 상태:', authState);
 
