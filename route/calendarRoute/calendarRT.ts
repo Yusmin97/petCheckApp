@@ -36,16 +36,29 @@ router.post('/add-schedule', async (req: Request, res: Response) => {
 
 // 캘린더 일정 불러오기 API 엔드포인트
 router.get('/get-schedules', async (req: Request, res: Response) => {
-  const { user_id } = req.query; // 사용자 ID를 쿼리에서 가져옵니다.
+  const { user_id } = req.query; // 클라이언트에서 전달받은 사용자 ID
 
   try {
-    // 사용자 ID를 기반으로 해당 사용자의 일정을 가져옵니다.
-    const schedules = await mypetQuery('SELECT * FROM calendar_schedule WHERE user_id = ?', [user_id]);
+    // 1. 클라이언트로부터 전달받은 user_id를 이용하여 해당 사용자의 user_num을 데이터베이스에서 찾습니다.
+    const userRecord = await mypetQuery('SELECT user_num FROM users WHERE user_id = ?', [user_id]);
+
+    // 사용자가 존재하는지 확인합니다.
+    if (userRecord.length === 0) {
+      return res.status(404).json({ error: '사용자를 찾을 수 없습니다.' });
+    }
+
+    const user_num = userRecord[0].user_num; // 사용자의 user_num
+
+    // 2. user_num을 이용하여 해당 사용자의 일정을 데이터베이스에서 가져옵니다.
+    const schedules = await mypetQuery('SELECT * FROM calendar_schedule WHERE user_id = ?', [user_num]);
+
+    // 3. 가져온 일정을 클라이언트에게 응답으로 전송합니다.
     res.status(200).json(schedules);
   } catch (error) {
     console.error('일정 불러오기 중 오류 발생:', error);
     res.status(500).json({ error: '일정 불러오기 중 오류가 발생했습니다.' });
   }
 });
+
 
 export default router;
