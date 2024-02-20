@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useAuth } from '../../authContext/authProvider';
 import './PetInfo.css';
 
 interface PetInfo {
@@ -22,6 +23,9 @@ function PetInfoForm() {
     pet_birth: '',
     pet_blood: '',
   });
+  const { authState } = useAuth();
+
+  console.log('전역 상태:', authState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -34,7 +38,10 @@ function PetInfoForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/pet-info', formData);
+      const response = await axios.post('http://localhost:3001/pet-info', {
+        ...formData,
+        user_id: authState.userId, // 사용자의 아이디를 함께 전송
+      });
       console.log(response.data);
       // handle success
     } catch (error) {
