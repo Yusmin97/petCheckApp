@@ -121,14 +121,13 @@ function Main() {
           </button>
         </div>
         <div>
-          <ul>
+          {/* 이모지를 파싱하여 인코딩 하는 방법을 찾아본다 */}
             {pets.map((pet) => (
-              <li className="petEmogiMain" key={pet.pet_id}>
-                {pet.pet_emoji && String.fromCodePoint(parseInt(pet.pet_emoji.replace('U+', ''), 16))}
-              </li>
-            ))}
-          </ul>
-        </div>
+              <div className="petEmogiMain" key={pet.pet_id}>
+                {pet.pet_emoji}
+              </div>
+            ))}                      
+        </div>        
       </div>
       <div className="hospital_walk">
         <div className="hospital">
