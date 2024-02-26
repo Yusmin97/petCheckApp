@@ -8,233 +8,13 @@
   flex-direction: column;
 }
 
-.petName {
-  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
-  width: 75vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  margin-top: 2vh;
-}
-.petNameInput {
-  width: 65vw;
-  height: 5vh;
-  font-family: Inter;
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  text-indent: 60px;
-}
-.placeholderName {
-  position: absolute;
-  top: 10;
-  left: 20px;
-  pointer-events: none;
-  color: #000; /* 힌트의 색상 */
-}
-.petNameInput:focus + .placeholderName {
-  display: none;
-}
-
-.petEmogi {
-  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
-  width: 75vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-}
-.petEmogiSelect {
-  width: 70vw;
-  height: 5vh;
-  font-family: Inter;
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  text-indent: 55px;
-}
-.placeholderEmogi {
-  position: absolute;
-  top: 10;
-  left: 20px;
-  pointer-events: none;
-  color: #000; /* 힌트의 색상 */
-}
-
-.petGender {
-  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
-  width: 75vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  margin-top: 2vh;
-}
-.petGenderSelect {
-  width: 70vw;
-  height: 5vh;
-  font-family: Inter;
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  text-indent: 55px;
-}
-.placeholderGender {
-  position: absolute;
-  top: 10;
-  left: 20px;
-  pointer-events: none;
-  color: #000; /* 힌트의 색상 */
-}
-.petGenderSelect:focus + .placeholderGender {
-  display: none;
-}
-
-.petType {
-  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
-  width: 75vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  margin-top: 2vh;
-}
-.petTypeInput {
-  width: 65vw;
-  height: 5vh;
-  font-family: Inter;
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  text-indent: 110px;
-}
-.placeholderType {
-  position: absolute;
-  top: 10;
-  left: 20px;
-  pointer-events: none;
-  color: #000; /* 힌트의 색상 */
-}
-.petTypeInput:focus + .placeholderType {
-  display: none;
-}
-
-.petNeutered {
-  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
-  width: 75vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  margin-top: 2vh;
-}
-.petNeuteredSelect {
-  width: 70vw;
-  height: 5vh;
-  font-family: Inter;
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  text-indent: 110px;
-}
-.placeholderNeutered {
-  position: absolute;
-  top: 10;
-  left: 20px;
-  pointer-events: none;
-  color: #000; /* 힌트의 색상 */
-}
-.petNeuteredSelect:focus + .placeholderNeutered {
-  display: none;
-}
-
-.petWeight {
-  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
-  width: 75vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  margin-top: 2vh;
-}
-.petWeightInput {
-  width: 65vw;
-  height: 5vh;
-  font-family: Inter;
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  text-indent: 75px;
-}
-.placeholderWeight {
-  position: absolute;
-  top: 10;
-  left: 20px;
-  pointer-events: none;
-  color: #000; /* 힌트의 색상 */
-}
-.petWeightInput:focus + .placeholderWeight {
-  display: none;
-}
-
-.petBirth {
-  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
-  width: 75vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  margin-top: 2vh;
-}
-.petBirthInput {
-  width: 65vw;
-  height: 5vh;
-  font-family: Inter;
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  text-indent: 30px;
-}
-.placeholderBirth {
-  position: absolute;
-  top: 10;
-  left: 20px;
-  pointer-events: none;
-  color: #000; /* 힌트의 색상 */
-}
-.petBirthInput:focus + .placeholderBirth {
-  display: none;
-}
-
+.petName,
+.petEmogi,
+.petGender,
+.petType,
+.petNeutered,
+.petWeight,
+.petBirth,
 .petBlood {
   background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
   width: 75vw;
@@ -242,28 +22,62 @@
   display: flex;
   align-items: center;
   position: relative;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-radius: 30px; /* 모든 코너에 동일하게 반영 */
   margin-top: 2vh;
 }
+
+.petNameInput,
+.petEmogiSelect,
+.petGenderSelect,
+.petTypeInput,
+.petNeuteredSelect,
+.petWeightInput,
+.petBirthInput,
 .petBloodSelect {
-  width: 70vw;
+  width: 65vw;
   height: 5vh;
   font-family: Inter;
   font-size: 15px;
   background-color: transparent;
   border: none;
-  text-indent: 70px;
 }
+
+.text-indent30{
+  text-indent: 30px;
+}
+.text-indent60 {
+  text-indent: 60px;
+}
+.text-indent75 {
+  text-indent: 75px;
+}
+.text-indent110 {
+  text-indent: 110px;
+}
+
+.placeholderName,
+.placeholderEmogi,
+.placeholderGender,
+.placeholderType,
+.placeholderNeutered,
+.placeholderWeight,
+.placeholderBirth,
 .placeholderBlood {
   position: absolute;
-  top: 10;
+  top: 50%;
   left: 20px;
+  transform: translateY(-50%);
   pointer-events: none;
   color: #000; /* 힌트의 색상 */
 }
+
+.petNameInput:focus + .placeholderName,
+.petEmogiSelect:focus + .placeholderEmogi,
+.petGenderSelect:focus + .placeholderGender,
+.petTypeInput:focus + .placeholderType,
+.petNeuteredSelect:focus + .placeholderNeutered,
+.petWeightInput:focus + .placeholderWeight,
+.petBirthInput:focus + .placeholderBirth,
 .petBloodSelect:focus + .placeholderBlood {
   display: none;
 }
@@ -271,14 +85,12 @@
 .petInfoButton {
   margin-top: 2vh;
 }
+
 .petInfoBtn {
   background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
   width: 130px;
   height: 50px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-radius: 30px; /* 모든 코너에 동일하게 반영 */
   margin-top: 4vh;
   margin-left: 45vw;
   border: none;
