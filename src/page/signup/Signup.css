@@ -7,82 +7,29 @@
   align-items: center;
   flex-direction: column;
 }
-.signupId {
-  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
-  position: relative;
-  width: 75vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-}
-.signupPassword {
-  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
-  position: relative;
-  width: 75vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  margin-top: 2vh;
-}
-.signupPasswordCheck {
-  background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
-  width: 75vw;
-  height: 5vh;
-  display: flex;
-  align-items: center;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  margin-top: 2vh;
-}
+
+.signupId,
+.signupPassword,
+.signupPasswordCheck,
 .signupName {
   background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
   width: 75vw;
   height: 5vh;
   display: flex;
   align-items: center;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-radius: 30px;
+  position: relative;
+}
+
+.signupPassword,
+.signupPasswordCheck,
+.signupName {
   margin-top: 2vh;
 }
-.signupIdInput {
-  width: 65vw;
-  height: 5vh;
-  font-family: Inter;
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  text-indent: 20px;
-}
-.signupPasswordInput {
-  width: 65vw;
-  height: 5vh;
-  font-family: Inter;
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  text-indent: 20px;
-}
-.signupPasswordInputCheck {
-  width: 65vw;
-  height: 5vh;
-  font-family: Inter;
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  text-indent: 20px;
-}
+
+.signupIdInput,
+.signupPasswordInput,
+.signupPasswordInputCheck,
 .signupNameInput {
   width: 65vw;
   height: 5vh;
@@ -92,45 +39,32 @@
   border: none;
   text-indent: 20px;
 }
+
 .signup_btn {
   background-color: rgba(255, 229.52130317687988, 139.18750405311584, 1);
   width: 130px;
   height: 50px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-radius: 30px;
   margin-top: 4vh;
   margin-left: 45vw;
   border: none;
 }
 
-.duplicateIdcheck {
-  position: absolute; /* 절대 위치 설정 */
-  top: 50%; /* 상단 기준으로 중앙 정렬 */
-  transform: translateY(-50%); /* 세로 중앙 정렬 */
-  right: -20px; /* 우측에서 10px만큼 떨어지도록 설정 */
+.duplicateIdcheck,
+.duplicatePasswordcheck {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -20px;
   border-radius: 50%;
   background-color: rgba(255, 0, 0, 1);
   width: 10px;
   height: 10px;
-}
-.duplicateIdcheck.available {
-  background-color: rgba(0, 255, 0, 1); /* 초록색으로 변경 */
 }
 
-.duplicatePasswordcheck {
-  position: absolute; /* 절대 위치 설정 */
-  top: 50%; /* 상단 기준으로 중앙 정렬 */
-  transform: translateY(-50%); /* 세로 중앙 정렬 */
-  right: -20px; /* 우측에서 10px만큼 떨어지도록 설정 */
-  border-radius: 50%;
-  background-color: rgba(255, 0, 0, 1);
-  width: 10px;
-  height: 10px;
-}
+.duplicateIdcheck.available,
 .duplicatePasswordcheck.match {
-  background-color: rgba(0, 255, 0, 1); /* 초록색으로 변경 */
+  background-color: rgba(0, 255, 0, 1);
 }
 
 .duplicateId {
@@ -143,6 +77,7 @@
   border: none;
   margin-left: 10vw;
 }
+
 .signupLogo {
   width: 260px;
   height: 70px;
