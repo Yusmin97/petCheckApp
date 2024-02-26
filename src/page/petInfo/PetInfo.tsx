@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { useAuth } from '../../authContext/authProvider';
-import './PetInfo.css';
 
 interface PetInfo {
   pet_name: string;
@@ -54,68 +53,68 @@ function PetInfoForm() {
   };
 
   return (
-    <div className="container">
-      <div className="petInfoTitle">반려동물 정보</div>
+    <div className="bg-yellow-100 w-screen h-screen flex justify-center items-center flex-col">
+      <div className="w-64 h-16 flex justify-center items-center font-inter text-center text-xl">반려동물 정보</div>
       <form onSubmit={handleSubmit}>
-        <div className="petEmogi">
-          <label htmlFor="emogi" className="placeholderEmogi">
+        <div className="bg-yellow-300 w-72 h-10 flex items-center relative rounded-full mt-2">
+          <label htmlFor="emogi" className="placeholderEmogi absolute top-1/2 left-4 transform -translate-y-1/2 pointer-events-none text-black">
             종류:
           </label>
-          <select className="petEmogiSelect text-indent60" id="emogi" name="pet_emogi" onChange={handleChange}>
+          <select className="petEmogiSelect w-65 h-10 font-inter text-base bg-transparent border-none pl-16" id="emogi" name="pet_emogi" onChange={handleChange}>
             <option value=""></option>
             <option value="1F436">강아지</option>
             <option value="1F431">고양이</option>
           </select>
         </div>
-        <div className="petName">
-          <label htmlFor="name" className="placeholderName">
+        <div className="bg-yellow-300 w-72 h-10 flex items-center relative rounded-full mt-2">
+          <label htmlFor="name" className="placeholderName absolute top-1/2 left-4 transform -translate-y-1/2 pointer-events-none text-black">
             이름:
           </label>
-          <input className="petNameInput text-indent60" id="name" type="text" name="pet_name" onChange={handleChange} />
+          <input className="petNameInput w-65 h-10 font-inter text-base bg-transparent border-none pl-16" id="name" type="text" name="pet_name" onChange={handleChange} />
         </div>
-        <div className="petGender">
-          <label htmlFor="gender" className="placeholderGender">
+        <div className="bg-yellow-300 w-72 h-10 flex items-center relative rounded-full mt-2">
+          <label htmlFor="gender" className="placeholderGender absolute top-1/2 left-4 transform -translate-y-1/2 pointer-events-none text-black">
             성별:
           </label>
-          <select className="petGenderSelect text-indent60" id="gender" name="pet_gender" onChange={handleChange}>
+          <select className="petGenderSelect w-65 h-10 font-inter text-base bg-transparent border-none pl-16" id="gender" name="pet_gender" onChange={handleChange}>
             <option value=""></option>
             <option value="male">수컷</option>
             <option value="female">암컷</option>
           </select>
         </div>
-        <div className="petType">
-          <label htmlFor="pet_type" className="placeholderType">
+        <div className="bg-yellow-300 w-72 h-10 flex items-center relative rounded-full mt-2">
+          <label htmlFor="pet_type" className="placeholderType absolute top-1/2 left-4 transform -translate-y-1/2 pointer-events-none text-black">
             반려동물 종:
           </label>
-          <input className="petTypeInput text-indent110" id="pet_type" type="text" name="pet_type" onChange={handleChange} />
+          <input className="petTypeInput w-65 h-10 font-inter text-base bg-transparent border-none pl-28" id="pet_type" type="text" name="pet_type" onChange={handleChange} />
         </div>
-        <div className="petNeutered">
-          <label htmlFor="neutered" className="placeholderNeutered">
+        <div className="bg-yellow-300 w-72 h-10 flex items-center relative rounded-full mt-2">
+          <label htmlFor="neutered" className="placeholderNeutered absolute top-1/2 left-4 transform -translate-y-1/2 pointer-events-none text-black">
             중성화 유무:
           </label>
-          <select className="petNeuteredSelect text-indent110" id="neutered" name="pet_neutered" onChange={handleChange}>
+          <select className="petNeuteredSelect w-65 h-10 font-inter text-base bg-transparent border-none pl-32" id="neutered" name="pet_neutered" onChange={handleChange}>
             <option value=""></option>
             <option value="yes">O</option>
             <option value="no">X</option>
           </select>
         </div>
-        <div className="petWeight">
-          <label htmlFor="weight" className="placeholderWeight">
+        <div className="bg-yellow-300 w-72 h-10 flex items-center relative rounded-full mt-2">
+          <label htmlFor="weight" className="placeholderWeight absolute top-1/2 left-4 transform -translate-y-1/2 pointer-events-none text-black">
             몸무게:
           </label>
-          <input className="petWeightInput text-indent75" id="weight" type="text" name="pet_weight" onChange={handleChange} />
+          <input className="petWeightInput w-65 h-10 font-inter text-base bg-transparent border-none pl-20" id="weight" type="text" name="pet_weight" onChange={handleChange} />
         </div>
-        <div className="petBirth">
-          <label htmlFor="birthday" className="placeholderBirth">
+        <div className="bg-yellow-300 w-72 h-10 flex items-center relative rounded-full mt-2">
+          <label htmlFor="birthday" className="placeholderBirth absolute top-1/2 left-4 transform -translate-y-1/2 pointer-events-none text-black">
             생일:
           </label>
-          <input className="petBirthInput text-indent30" id="birthday" type="date" name="pet_birth" onChange={handleChange} />
+          <input className="petBirthInput w-65 h-10 font-inter text-base bg-transparent border-none pl-32" id="birthday" type="date" name="pet_birth" onChange={handleChange} />
         </div>
-        <div className="petBlood">
-          <label htmlFor="blood_type" className="placeholderBlood">
+        <div className="bg-yellow-300 w-72 h-10 flex items-center relative rounded-full mt-2">
+          <label htmlFor="blood_type" className="placeholderBlood absolute top-1/2 left-4 transform -translate-y-1/2 pointer-events-none text-black">
             혈액형:
           </label>
-          <select className="petBloodSelect text-indent75" id="blood_type" name="pet_blood" onChange={handleChange}>
+          <select className="petBloodSelect w-65 h-10 font-inter text-base bg-transparent border-none pl-20" id="blood_type" name="pet_blood" onChange={handleChange}>
             <option value=""></option>
             <option value="A">A</option>
             <option value="B">B</option>
@@ -123,7 +122,7 @@ function PetInfoForm() {
           </select>
         </div>
         <div className="petInfoButton">
-          <button className="petInfoBtn" type="submit">
+          <button className="bg-yellow-300 w-32 h-12 rounded-full mt-10 ml-60 border-none"type="submit">
             제출
           </button>
         </div>
